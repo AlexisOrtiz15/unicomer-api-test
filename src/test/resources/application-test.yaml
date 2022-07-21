@@ -1,0 +1,19 @@
+  
+#DB
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    open-in-view: false # should never have transaction open to view ever
+  h2:
+    console:
+      enabled: false
+  flyway:
+    locations:
+      - classpath:db/h2/migration/common
+
+

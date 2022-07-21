@@ -1,0 +1,36 @@
+#
+# Adding /management/health for conatiner validation
+#
+management:
+  endpoints:
+    web:
+      base-path: /management
+      exposure:
+        include:
+          - health
+          - info
+
+#
+# Development DB should be replace
+#
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    open-in-view: false # should never have transaction open to view ever
+    generate-ddl: true
+    properties:
+      hibernate:
+        show_sql: false
+    hibernate:
+      ddl-auto: none
+  h2:
+    console:
+      enabled: true
+  flyway:
+    locations:
+      - classpath:db/h2/migration/common

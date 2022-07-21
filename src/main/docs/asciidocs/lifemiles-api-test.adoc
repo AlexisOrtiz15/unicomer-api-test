@@ -1,0 +1,127 @@
+= LIFEMILES API TEST API Guide
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 3
+:sectlinks:
+:sectnums:
+:operation-curl-request-title: Example request
+:operation-http-response-title: Example response
+
+[[overview]]
+== Overview
+
+[[overview_http_verbs]]
+=== HTTP verbs
+
+LIFEMILES API TEST tries to adhere as closely as possible to standard HTTP and REST conventions in its
+use of HTTP verbs.
+
+|===
+| Verb | Usage
+
+| `GET`
+| Used to retrieve a resource
+
+| `POST`
+| Used to create a new resource
+
+| `PATCH`
+| Used to update an existing resource, including partial updates
+
+| `DELETE`
+| Used to delete an existing resource
+|===
+
+[[overview_http_status_codes]]
+=== HTTP status codes
+
+LIFEMILES API TEST tries to adhere as closely as possible to standard HTTP and REST conventions in its
+use of HTTP status codes.
+
+|===
+| Status code | Usage
+
+| `200 OK`
+| The request completed successfully
+
+| `201 Created`
+| A new resource has been created successfully. The resource's URI is available from the response's
+`Location` header
+
+| `204 No Content`
+| An update to an existing resource has been applied successfully
+
+| `400 Bad Request`
+| The request was malformed. The response body will include an error providing further information
+
+| `404 Not Found`
+| The requested resource did not exist
+|===
+
+[[resources]]
+== Resources
+
+[[resources_funny_names]]
+=== Funny Names
+Resource that hold most of the funniest names on the world.
+
+==== [GET] /funny-names
+A `Get All` Funny Names found using a Spring Pageable result, which enable you
+to select a page and sort the information based on FunnyName filters.
+
+operation::funny-names-get-all[snippets='curl-request,http-response,response-fields']
+
+[[resources_funny_names_links]]
+===== Links
+
+include::{snippets}/funny-names-get-all/links.adoc[]
+
+[[resources_funny_name]]
+==== [GET] /funny-names/{id}
+
+To `GET` a specific Funny Name based on the unique identifier.
+
+operation::funny-name-get[snippets='curl-request,path-parameters,http-response,response-fields']
+
+[[resources_funny_name_links]]
+===== Links
+
+include::{snippets}/funny-name-get/links.adoc[]
+
+[[resources_funny_name_create]]
+==== [POST] /funny-names
+To `POST` a new Funny Name into the repository.
+
+operation::post-funny-name[snippets='curl-request,request-body,http-response,response-fields']
+
+[[resources_funny_name_create_links]]
+===== Links
+
+include::{snippets}/post-funny-name/links.adoc[]
+
+[[resource_common]]
+== Commons
+
+[[resource_common_page]]
+=== Page
+
+Paginated result will use a common set of properties that are describe below
+
+|===
+|Path|Description
+
+|`+number+`
+|Current page that was get thru the response, values could got `from 0 to totalPages - 1`
+
+|`+totalElements+`
+|Number of records that are available
+
+|`+totalPages+`
+|Total number of pages
+
+|`+size+`
+|Number of records that are contain in the current page
+
+|===
