@@ -7,6 +7,12 @@ For building and running the application you need:
 - [JDK 11](https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html)
 - [Maven 3](https://maven.apache.org)
 
+## Deploying the application to Heroku
+
+[The easiest way to deploy the sample application to Herokuis to use the Github](https://dev.to/kristijanfistrek/deploy-springboot-app-to-heroku-with-github-27ij)
+
+[Test the application deployed on heroku](https://unicomer-api-test.herokuapp.com/swagger-ui/index.html)
+
 ## Running the application locally
 
 There are several ways to run a Spring Boot application on your local machine. One way is to execute the `main` method in the `de.codecentric.springbootsample.Application` class from your IDE.
@@ -30,16 +36,6 @@ When running the application using Maven, Java Options can be pass down using th
 `-Dspring-boot.run.jvmArguments` Maven Option, as shown below:
  
 `-Dspring-boot.run.jvmArguments="-Denvironment_log_root_level=debug"`
-
-
-
-### Adding new variables
-
-Any property setup on `application.[yaml|properties]` file can be customize 
-as shown on [Customizing varibles](###Customizing variables).
-
-To do so, the value should be replace for a `${variable_name}` using snake case. A default value 
-can be set like `${variable_name:default_value}`
 
 ### Flyway
 
